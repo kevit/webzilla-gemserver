@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # via the IP. Host-only networks can talk to the host machine as well as
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
-  config.vm.network :private_network, ip: "33.33.33.10"
+  config.vm.network :private_network, ip: "172.16.200.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -95,7 +95,8 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[webzilla-gemserver::default]"
+        "recipe[webzilla-gemserver::default]",
+        "recipe[webzilla-gemserver::gitdeploy]"
     ]
   end
 end

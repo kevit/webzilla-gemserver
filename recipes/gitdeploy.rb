@@ -2,6 +2,13 @@ gem_package "geminabox" do
     action :install
 end
 
+directory "/opt/repos" do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    action :create
+end
+
 
 git "/opt/repos/testgem" do
    repository "https://github.com/kevit/testgem.git"
