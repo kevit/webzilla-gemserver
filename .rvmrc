@@ -1,0 +1,5 @@
+rvm use 1.9.3@wcloud
+
+alias knife="bundle exec knife"
+alias berks="bundle exec berks"
+alias kitchen="bundle exec kitchen"
