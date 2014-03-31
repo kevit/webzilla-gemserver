@@ -10,6 +10,7 @@ directory "/opt/repos" do
 end
 
 
+gemserver_port = node[:gem_server][:port]
 gems = data_bag('gems')
 
 gems.each do |gem_info|
@@ -27,8 +28,8 @@ gems.each do |gem_info|
    cwd "/opt/repos/#{gem_name}"
    code <<-EOH
    gem build #{gem_name}.gemspec
-   gem sources --add http://127.0.0.1:9010
-   gem inabox -o -g http://127.0.0.1:9010 testgem-#{gem_version}.gem
+   gem sources --add http://127.0.0.1:#{gemserver_port}
+   gem inabox -o -g http://127.0.0.1:#{gemserver_port} #{gem_name}-#{gem_version}.gem
    EOH
    environment 'PREFIX' => "/usr/local"
    action :nothing

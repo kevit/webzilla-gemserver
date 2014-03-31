@@ -21,3 +21,13 @@ describe "geminabox service" do
 
 end
 
+describe file('/opt/repos') do
+    it { should be_directory }
+end
+
+describe command('ls /opt/repos/testgem/*.gem') do
+    it { should return_stdout /testgem\-0\.0\.1\.gem/ }
+end
+
+
+
